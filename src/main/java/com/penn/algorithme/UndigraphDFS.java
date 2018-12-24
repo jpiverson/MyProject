@@ -46,15 +46,18 @@ public class UndigraphDFS {
 	void initAndRun(int n) {
 		UndigraphDFS dfs = new UndigraphDFS();
 		dfs.n = n;
+		// 初始化二为矩阵
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j < n; j++) {
 				if (i == j) {
 					dfs.e[i][j] = 0;
 				} else {
-					dfs.e[i][j] = 99999999;
+					dfs.e[i][j] = 99999999; // 假设99999999为+
 				}
 			}
 		}
+
+		// 顶点之间的边，无向图所以e[1][2]和e[2][1]同时标识
 		dfs.e[1][2] = 1;
 		dfs.e[2][1] = 1;
 		dfs.e[1][3] = 1;
@@ -65,8 +68,9 @@ public class UndigraphDFS {
 		dfs.e[4][2] = 1;
 		dfs.e[3][5] = 1;
 		dfs.e[5][3] = 1;
-		dfs.book[1] = 1;
-		dfs.dfs(1);
+
+		dfs.book[1] = 1;// 标记1号顶点已经访问
+		dfs.dfs(1);// 从1号顶点开始遍历
 	}
 
 	public static void main(String[] args) {
